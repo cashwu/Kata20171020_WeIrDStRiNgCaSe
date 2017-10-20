@@ -22,6 +22,15 @@ namespace Kata20171020_WeIrDStRiNgCaSe
             var result = kata.ToWeirdCase("ab");
             Assert.AreEqual("Ab", result);
         }
+
+
+        [TestMethod]
+        public void input_abc()
+        {
+            var kata = new Kata();
+            var result = kata.ToWeirdCase("abc");
+            Assert.AreEqual("AbC", result);
+        }
     }
 
     public class Kata
@@ -33,7 +42,12 @@ namespace Kata20171020_WeIrDStRiNgCaSe
                 return s.ToUpper();
             }
 
-            return $"{char.ToUpper(s[0])}{s[1]}";
+            if (s.Length == 2)
+            {
+                return $"{char.ToUpper(s[0])}{s[1]}";
+            }
+
+            return $"{char.ToUpper(s[0])}{s[1]}{char.ToUpper(s[2])}";
         }
     }
 }
