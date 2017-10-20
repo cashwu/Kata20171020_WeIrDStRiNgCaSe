@@ -7,8 +7,19 @@ namespace Kata20171020_WeIrDStRiNgCaSe
     public class WeIrDStRiNgCaSeTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void input_a()
         {
+            var kata = new Kata();
+            var result = kata.ToWeirdCase("a");
+            Assert.AreEqual("A", result);
+        }
+    }
+
+    public class Kata
+    {
+        public string ToWeirdCase(string s)
+        {
+            return "A";
         }
     }
 }
