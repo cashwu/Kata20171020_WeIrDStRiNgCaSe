@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20171020_WeIrDStRiNgCaSe
@@ -23,7 +24,6 @@ namespace Kata20171020_WeIrDStRiNgCaSe
             Assert.AreEqual("Ab", result);
         }
 
-
         [TestMethod]
         public void input_abc()
         {
@@ -31,23 +31,21 @@ namespace Kata20171020_WeIrDStRiNgCaSe
             var result = kata.ToWeirdCase("abc");
             Assert.AreEqual("AbC", result);
         }
+        
+        [TestMethod]
+        public void input_abcd()
+        {
+            var kata = new Kata();
+            var result = kata.ToWeirdCase("abcd");
+            Assert.AreEqual("AbCd", result);
+        }
     }
 
     public class Kata
     {
         public string ToWeirdCase(string s)
         {
-            if (s.Length == 1)
-            {
-                return s.ToUpper();
-            }
-
-            if (s.Length == 2)
-            {
-                return $"{char.ToUpper(s[0])}{s[1]}";
-            }
-
-            return $"{char.ToUpper(s[0])}{s[1]}{char.ToUpper(s[2])}";
+            return string.Concat(s.Select((a, i) => i % 2 == 0 ? char.ToUpper(a) : a));
         }
     }
 }
